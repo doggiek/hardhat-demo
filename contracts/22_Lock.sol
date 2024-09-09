@@ -4,8 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract DoggieChain is ERC20, Ownable {
-
+contract DoggieChain1 is ERC20, Ownable {
     bool public isLocked = false;
     string public lock_account = "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2";
 
@@ -16,9 +15,17 @@ contract DoggieChain is ERC20, Ownable {
         _mint(msg.sender, 1000000 * 10 ** decimals());
     }
 
-    function transfer(address _to, uint _amount) public override returns (bool) {
+    function transfer(
+        address _to,
+        uint _amount
+    ) public override returns (bool) {
         require(isLocked == false, "Transfer was locked");
-        require(keccak256(msg.sender) == keccak256(lock_account), "Account was locked");
+        // 看起来字串需要abi.encode
+        require(
+            keccak256(abi.encodePacked(msg.sender)) ==
+                keccak256(abi.encode(lock_account)),
+            "Account was locked"
+        );
         super.transfer(_to, _amount);
     }
 

@@ -2,14 +2,13 @@
 // Compatible with OpenZeppelin Contracts ^5.0.0
 pragma solidity ^0.8.24;
 
-import "@openzeppelin/contracts@5.0.2/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts@5.0.2/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract DoggieChain is ERC20, Ownable {
-    constructor(address initialOwner)
-        ERC20("DoggieChain", "DGC")
-        Ownable(initialOwner)
-    {
+contract DoggieChain2 is ERC20, Ownable {
+    constructor(
+        address initialOwner
+    ) ERC20("DoggieChain", "DGC") Ownable(initialOwner) {
         _mint(msg.sender, 100000 * 10 ** decimals());
     }
 

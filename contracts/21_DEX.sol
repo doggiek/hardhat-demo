@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+// import "@openzeppelin/contracts/utils/math/SafeMath.sol";   // 老版本 @deprecated
 import "./SwappableToken.sol";
 
 // 36
@@ -14,7 +14,7 @@ import "./SwappableToken.sol";
 
 
 contract Dex {
-    using SafeMath for uint;
+    // using SafeMath for uint;
     address public token1;
     address public token2;
 
